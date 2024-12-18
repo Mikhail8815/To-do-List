@@ -1,6 +1,10 @@
 import * as React from 'react';
-import {Button} from "./Button";
+// import {Button} from "./Button";
 import {ChangeEvent, KeyboardEvent, useState} from "react";
+import Button from '@mui/material/Button'
+import {IconButton, TextField} from "@mui/material";
+import AddBoxIcon from '@mui/icons-material/AddBox'
+
 
 
 type Props = {
@@ -33,12 +37,26 @@ export const AddItemForm = ({addItem}: Props) => {
 
     return (
         <div>
-            <input value={itemTitle}
-                   onChange={changeItemTitleHandler}
-                   onKeyUp={addItemOnKeyUpHandler}
-                   className={error ? 'error' : ''}/>
-            <Button onClick={addItemHandler} title={'+'}/>
-            {error && <div className={'error-message'}>{error}</div>}
+            {/*<input value={itemTitle}*/}
+            {/*       onChange={changeItemTitleHandler}*/}
+            {/*       onKeyUp={addItemOnKeyUpHandler}*/}
+            {/*       className={error ? 'error' : ''}/>*/}
+            {/*<Button onClick={addItemHandler} title={'+'}/>*/}
+            <TextField
+                label="Enter a title"
+                variant={'outlined'}
+                // className={error ? 'error' : ''}
+                error={!!error}
+                helperText={error}
+                value={itemTitle}
+                size={'small'}
+                onChange={changeItemTitleHandler}
+                onKeyUp={addItemOnKeyUpHandler}
+            />
+            <IconButton onClick={addItemHandler} color={'primary'}>
+                <AddBoxIcon />
+            </IconButton>
+            {/*{error && <div className={'error-message'}>{error}</div>}*/}
         </div>
     );
 };

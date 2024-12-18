@@ -1,8 +1,11 @@
-// @flow
 import * as React from 'react';
-import {Button} from "./Button";
 import {ChangeEvent} from "react";
 import { EditableSpan } from './EditableSpan';
+import DeleteIcon from "@mui/icons-material/Delete";
+import ListItem from "@mui/material/ListItem";
+import IconButton from "@mui/material/IconButton";
+import Checkbox from "@mui/material/Checkbox";
+import {getListItemSx} from "./Todolist.styles";
 
 type TaskType = {
     id: string
@@ -20,12 +23,22 @@ export const Task = ({taskId, title, isDone, removeTaskHandler, changeTaskStatus
         changeTaskStatus(taskId, newStatusValue, id)
     }
     return (
-        <li key={taskId} className={isDone ? "is-done" : ""}>
-            <EditableSpan title={title} onChange={(title)=>changeTaskTitleHandler(taskId, title)}/>
-            <Button title={'X'} onClick={removeTaskHandler}/>
-            <input type="checkbox" checked={isDone} onChange={changeTaskStatusHandler}/>
+        <ListItem key={taskId}
+                  disableGutters
+                  disablePadding
+                  sx={getListItemSx(isDone)}
+        >
+            <div>
+                <Checkbox checked={isDone} onChange={changeTaskStatusHandler}/>
+                <EditableSpan title={title} onChange={(title)=>changeTaskTitleHandler(taskId, title)}/>
+            </div>
+            {/*<Button title={'X'} onClick={removeTaskHandler}/>*/}
+            <IconButton onClick={removeTaskHandler}>
+                <DeleteIcon />
+            </IconButton>
+
             {/*<button onClick={()=>removeTask(id)}>X</button>*/}
-        </li>
+        </ListItem>
 
     )
 }
