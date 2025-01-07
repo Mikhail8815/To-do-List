@@ -1,11 +1,8 @@
 import {v1} from "uuid";
 import {FilterValuesType, TasksStateType, TaskType, TodolistType} from "../App";
-import {AddTodolistActionType, RemoveTodolistActionType} from "./torolists-reducer";
+import {AddTodolistActionType, RemoveTodolistActionType, todolistID1, todolistID2} from "./torolists-reducer";
 
 //State
-
-let todolistID1 = v1()
-let todolistID2 = v1()
 
 const initialState: TasksStateType = {
     [todolistID1]: [
@@ -59,7 +56,7 @@ export const updateTaskAC = (payload: {taskId: string, title: string, todolistId
 
 //Reducer
 
-export const tasksReducer = (tasks: TasksStateType, action: ActionsType): TasksStateType => {
+export const tasksReducer = (tasks: TasksStateType = initialState, action: ActionsType): TasksStateType => {
     switch (action.type) {
         case 'ADD-TASK': {
             const {title, todolistId} = action.payload
@@ -82,8 +79,9 @@ export const tasksReducer = (tasks: TasksStateType, action: ActionsType): TasksS
             return {...tasks, [action.payload.id]: []}
         }
         case "REMOVE-TODOLIST": {
-            delete tasks[action.payload.id]
-            return {...tasks}
+            const stateCopy = {...tasks}
+            delete stateCopy[action.payload.id]
+            return stateCopy
         }
         default:
             return tasks
