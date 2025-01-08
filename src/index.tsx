@@ -5,7 +5,7 @@ import App from './App';
 import AppWithReducers from "./AppWithReducers";
 import AppWithRedux from "./AppWithRedux";
 import {Provider} from "react-redux";
-import {store} from "./State/store";
+import {store} from "./App/store";
 
 
 const root = ReactDOM.createRoot(

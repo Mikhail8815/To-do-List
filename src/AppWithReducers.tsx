@@ -59,7 +59,7 @@ function AppWithReducers() {
 
     //Функции для тудулиста
     const changeFilter = (filter: FilterValuesType, todolistId: string) => {
-        dispatchTodolists(changeTodolistFilterAC(todolistId, filter))
+        dispatchTodolists(changeTodolistFilterAC({id: todolistId, filter}))
     }
 
     const addTodolist = (title: string) => {
@@ -81,7 +81,7 @@ function AppWithReducers() {
     }
 
     const updateTitleTodolist = (todolistId: string, title: string) => {
-        dispatchTodolists(changeTodolistTitleAC(todolistId, title))
+        dispatchTodolists(changeTodolistTitleAC({id: todolistId, title}))
     }
 
 
