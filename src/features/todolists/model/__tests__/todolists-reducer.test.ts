@@ -4,9 +4,9 @@ import {
     removeTodolistAC,
     RemoveTodolistActionType,
     todolistsReducer
-} from './torolists-reducer'
+} from '../torolists-reducer'
 import { v1 } from 'uuid'
-import {TasksStateType, TodolistType} from '../App'
+import {TasksStateType, TodolistType} from '../../../../App/App'
 
 let todolistId1: string
 let todolistId2: string

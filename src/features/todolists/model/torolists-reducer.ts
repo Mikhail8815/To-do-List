@@ -1,7 +1,7 @@
 import {v1} from "uuid";
-import {FilterValuesType, TodolistType} from "../App";
+import {FilterValuesType, TodolistType} from "../../../App/App";
 
-//App
+//AppWithUseState
 
 export let todolistID1 = v1()
 export let todolistID2 = v1()

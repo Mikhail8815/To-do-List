@@ -1,13 +1,15 @@
 import {combineReducers, legacy_createStore} from "redux";
-import {todolistsReducer} from "../model/torolists-reducer";
-import {tasksReducer} from "../model/tasks-reducer";
+import {todolistsReducer} from "../features/todolists/model/torolists-reducer";
+import {tasksReducer} from "../features/todolists/model/tasks-reducer";
+import {appReducer} from "./app-reducer";
 
 const rootReducer = combineReducers({
     todolists: todolistsReducer,
-    tasks: tasksReducer
+    tasks: tasksReducer,
+    app: appReducer,
 })
 
-export type AppRootState = ReturnType<typeof store.getState>
+export type RootState = ReturnType<typeof store.getState>
 
 export const store = legacy_createStore(rootReducer)
 

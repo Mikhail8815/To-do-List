@@ -1,8 +1,8 @@
 import {v1} from "uuid";
-import {TasksStateType, TaskType} from "../App";
+import {TasksStateType, TaskType} from "../../../App/App";
 import {AddTodolistActionType, RemoveTodolistActionType} from "./torolists-reducer";
 
-//App
+//AppWithUseState
 
 const initialState: TasksStateType = {}
 
